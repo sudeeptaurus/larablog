@@ -1,0 +1,10 @@
+Route::get('add-roles', function (){
+    $roles = [
+        ['name' => 'admin', 'guard_name'=>'web'],
+        ['name' => 'author', 'guard_name'=>'web'],
+        ['name' => 'editor', 'guard_name'=>'web'],
+    ];
+    $role = Role::insert($roles);
+
+    return "success";
+});
