@@ -5,8 +5,9 @@
         <a href="{{route('user.index')}}" class="btn btn-primary rounded">All Users</a>
     </div>
     <h3 class="text-center">Update {{$user->name}}</h3>
-    <form action="{{route('user.store')}}" method="post">
+    <form action="{{route('user.update', [$user->id])}}" method="post">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="name">Name</label>
             <input
@@ -28,6 +29,14 @@
                 placeholder="Enter User Email"
                 value="{{$user->email}}"
             >
+        </div>
+        <div class="form-group">
+            <label for="roles">Roles</label>
+            <select name="role_id" id="roles" class="form-control">
+                @foreach($roles as $role)
+                    <option value="{{$role->id}}">{{strtoupper($role->name)}}</option>
+                @endforeach
+            </select>
         </div>
         <button class="btn btn-primary btn-block rounded" type="submit">Update User</button>
     </form>

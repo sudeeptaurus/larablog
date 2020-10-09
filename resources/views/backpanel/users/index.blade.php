@@ -29,10 +29,14 @@
                         <i class="material-icons">edit</i>
                         Edit
                     </a>
-                    <a href="#" class="btn btn-danger btn-sm rounded">
-                        <i class="material-icons">delete</i>
-                        Delete
-                    </a>
+                    <form action="{{route('user.destroy', [$user->id])}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm rounded">
+                            <i class="material-icons">delete</i>
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         @empty

@@ -10,4 +10,8 @@ Route::get('/backpanel/users/create', 'User\UserController@create')->name('user.
 
 Route::post('/backpanel/users/create', 'User\UserController@store')->name('user.store');
 
-Route::get('/backpanel/users/{id}/edit', 'User\UserController@edit')->name('user.edit');
+Route::get('/backpanel/users/{user}/edit', 'User\UserController@edit')->name('user.edit');
+
+Route::put('/backpanel/users/{user}/edit', 'User\UserController@update')->name('user.update');
+
+Route::delete('/backpanel/users/{user}/delete', 'User\UserController@destroy')->name('user.destroy');
