@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -27,7 +28,7 @@ class UserController extends Controller
         return view('backpanel.users.create')->with('roles', $this->roles);
     }
 
-    public function store (Request $request)
+    public function store (UserRequest $request)
     {
 //        return \request()->all();
 //        return $request->all();
@@ -40,19 +41,21 @@ class UserController extends Controller
 
         $user = User::create($request->all());
         $user->assignRole($request->role_id);
+        $user->addMedia($request->avatar)->toMediaCollection('user_avatar');
         return $this->redirectUser($user->name." Added Successfully");
     }
 
     public function edit(User $user)
     {
-        return $user;
+//        return $user;
         return view('backpanel.users.edit', compact('user'))
             ->with('roles', $this->roles);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $user->update($request->all());
+        $user->syncRoles([$request->role_id]);
         return $this->redirectUser($user->name." Updated Successfully");
     }
 

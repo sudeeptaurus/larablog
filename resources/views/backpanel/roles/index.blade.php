@@ -9,31 +9,23 @@
     @endif
 
     <div class="d-flex justify-content-between">
-        <a href="{{route('user.create')}}" class="btn btn-primary rounded">Create User</a>
+        <a href="{{route('role.create')}}" class="btn btn-primary rounded">Create Role</a>
     </div>
-    <h2>All Users</h2>
+    <h2>All Roles</h2>
     <table class="table table-hover">
         <tr>
-            <th>Thumb</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
             <th>Actions</th>
         </tr>
-        @forelse($users as $user)
+        @forelse($roles as $role)
             <tr>
+                <td>{{$role->name}}</td>
                 <td>
-                    <img src="{{$user->avatar}}" alt="{{$user->name}}" width="75px">
-                </td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{strtoupper($user->roles[0]->name)}}</td>
-                <td>
-                    <a href="{{route('user.edit', [$user->id])}}" class="btn btn-warning btn-sm rounded">
+                    <a href="{{route('role.edit', [$role->id])}}" class="btn btn-warning btn-sm rounded">
                         <i class="material-icons">edit</i>
                         Edit
                     </a>
-                    <form action="{{route('user.destroy', [$user->id])}}" method="post">
+                    <form action="{{route('role.destroy', [$role->id])}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm rounded">
@@ -45,7 +37,7 @@
             </tr>
         @empty
             <tr>
-                <th>No data found</th>
+                <th>No Role found</th>
             </tr>
         @endforelse
     </table>

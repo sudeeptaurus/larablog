@@ -5,6 +5,7 @@
         <a href="{{route('user.index')}}" class="btn btn-primary rounded">All Users</a>
     </div>
     <h3 class="text-center">Update {{$user->name}}</h3>
+    @include('backpanel.layouts.errors')
     <form action="{{route('user.update', [$user->id])}}" method="post">
         @csrf
         @method('PUT')
@@ -34,7 +35,7 @@
             <label for="roles">Roles</label>
             <select name="role_id" id="roles" class="form-control">
                 @foreach($roles as $role)
-                    <option value="{{$role->id}}">{{strtoupper($role->name)}}</option>
+                    <option value="{{$role->id}}" @if($role->id === $user->role_id) selected @endif>{{strtoupper($role->name)}}</option>
                 @endforeach
             </select>
         </div>

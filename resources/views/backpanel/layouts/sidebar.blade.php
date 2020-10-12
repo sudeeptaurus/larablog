@@ -18,6 +18,13 @@
             </li>
 
             <li class="nav-item active  ">
+                <a class="nav-link" href="{{route('role.index')}}">
+                    <i class="material-icons">group_work</i>
+                    <p>Roles</p>
+                </a>
+            </li>
+
+            <li class="nav-item active  ">
                 <a class="nav-link" href="{{route('user.index')}}">
                     <i class="material-icons">face</i>
                     <p>User</p>
