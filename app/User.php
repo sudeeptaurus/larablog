@@ -13,10 +13,6 @@ class User extends Authenticatable implements HasMedia
 {
     use Notifiable, HasRoles, InteractsWithMedia;
 
-
-
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -63,6 +59,7 @@ class User extends Authenticatable implements HasMedia
     }
 
     //media method
+
     public function clearMediaCollection( string $collectionName = 'default' ): HasMedia {
         // TODO: Implement clearMediaCollection() method.
     }

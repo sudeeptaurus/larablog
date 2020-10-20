@@ -5,29 +5,28 @@
     @include('backpanel.layouts.success')
 
     <div class="d-flex justify-content-between">
-        <a href="{{route('role.create')}}" class="btn btn-primary rounded">Create Role</a>
+        <a href="{{route('category.create')}}" class="btn btn-primary rounded">Create Category</a>
+        <a href="{{route('category.trash')}}" class="btn btn-danger rounded">Trash</a>
     </div>
-    <h2>All Roles</h2>
+    <h2>All Categories</h2>
     <table class="table table-hover">
         <tr>
             <th>Name</th>
+            <th>Slug</th>
             <th>Actions</th>
         </tr>
-        @forelse($roles as $role)
+        @forelse($categories as $category)
             <tr>
-                <td>{{$role->name}}</td>
+                <td>{{$category->name}}</td>
+                <td>{{$category->slug}}</td>
                 <td class="d-flex">
                     <div>
-                        <a href="{{route('role.assign-permission', [$role->id])}}" class="btn btn-success btn-sm rounded">
-                            <i class="material-icons">connect_without_contact</i>
-                            Assign Permission
-                        </a>
-                        <a href="{{route('role.edit', [$role->id])}}" class="btn btn-warning btn-sm rounded">
+                        <a href="{{route('category.edit', [$category->id])}}" class="btn btn-warning btn-sm rounded">
                             <i class="material-icons">edit</i>
                             Edit
                         </a>
                     </div>
-                    <form action="{{route('role.destroy', [$role->id])}}" method="post">
+                    <form action="{{route('category.destroy', [$category->id])}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm rounded">
@@ -39,7 +38,7 @@
             </tr>
         @empty
             <tr>
-                <th>No Role found</th>
+                <th>No Category found</th>
             </tr>
         @endforelse
     </table>

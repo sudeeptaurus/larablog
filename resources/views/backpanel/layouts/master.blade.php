@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="{{asset('back-assets/css/material-dashboard.min.css')}}" rel="stylesheet" />
+    @yield('styles')
 </head>
 
 <body>
@@ -27,6 +28,9 @@
 
     </div>
 </div>
+<script src="{{asset('js/app.js')}}"></script>
+@yield('scripts')
+
 </body>
 
 </html>

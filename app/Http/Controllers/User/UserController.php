@@ -31,7 +31,7 @@ class UserController extends Controller
     public function store (UserRequest $request)
     {
 //        return \request()->all();
-//        return $request->all();
+//        return $request->avatar;
 
 //        $user = User::create([
 //            'name'      => $request->name,

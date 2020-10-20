@@ -18,6 +18,27 @@
             </li>
 
             <li class="nav-item active  ">
+                <a class="nav-link" href="{{route('post.index')}}">
+                    <i class="material-icons">article</i>
+                    <p>Posts</p>
+                </a>
+            </li>
+
+            <li class="nav-item active  ">
+                <a class="nav-link" href="{{route('category.index')}}">
+                    <i class="material-icons">all_inbox</i>
+                    <p>Categories</p>
+                </a>
+            </li>
+
+            <li class="nav-item active  ">
+                <a class="nav-link" href="{{route('permission.index')}}">
+                    <i class="material-icons">work</i>
+                    <p>Permissions</p>
+                </a>
+            </li>
+
+            <li class="nav-item active  ">
                 <a class="nav-link" href="{{route('role.index')}}">
                     <i class="material-icons">group_work</i>
                     <p>Roles</p>

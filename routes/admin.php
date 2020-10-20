@@ -1,6 +1,7 @@
 <?php
 
-Route::view('/backpanel', 'backpanel.dashboard.index')->name('backpanel.dashboard');
+Route::view('/backpanel', 'backpanel.dashboard.index')
+    ->name('backpanel.dashboard');
 
 // user routes
 
@@ -17,4 +18,53 @@ Route::delete('/backpanel/users/{user}/delete', 'User\UserController@destroy')->
 
 // role routes
 
+Route::get('/backpanel/role/{role}/assign-permission',
+    'User\RoleController@assignPermissionView')
+     ->name('role.assign-permission');
+
+Route::post('/backpanel/role/{role}/assign-permission',
+    'User\RoleController@assignPermission')
+     ->name('role.store-permission');
+
 Route::resource('backpanel/role', 'User\RoleController');
+
+// permission routes
+
+Route::resource('backpanel/permission', 'User\PermissionController');
+
+// category routes
+
+Route::get('backpanel/category/trashed',
+    'User\CategoryController@trashedCategory')
+     ->name('category.trash');
+
+Route::post('backpanel/category/{category}/restore',
+    'User\CategoryController@restoreCategory')
+     ->name('category.restore');
+
+Route::delete('backpanel/category/{category}/delete',
+    'User\CategoryController@forceDeleteCategory')
+     ->name('category.force.delete');
+
+Route::resource('backpanel/category', 'User\CategoryController');
+
+
+// posts routes
+
+Route::post('backpanel/post/upload',
+    'User\PostController@uploadPhoto')
+     ->name('post.upload');
+
+Route::get('backpanel/post/trashed',
+    'User\PostController@trashedPost')
+     ->name('post.trash');
+
+Route::post('backpanel/post/{post}/restore',
+    'User\PostController@restorePost')
+     ->name('post.restore');
+
+Route::delete('backpanel/post/{post}/delete',
+    'User\PostController@forceDeletePost')
+     ->name('post.force.delete');
+
+Route::resource('/backpanel/post', 'User\PostController');
